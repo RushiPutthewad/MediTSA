@@ -8,11 +8,6 @@ This web application is designed to streamline the process of donating unused me
 
 ...
 
-## Acknowledgments
-
-- [Django Documentation](https://docs.djangoproject.com/)
-- [Bootstrap Documentation](https://getbootstrap.com/)
-
 ## About The Project
 
 This web application is designed to streamline the process of donating unused medicine to NGOs, ensuring efficient record management and real-time tracking of drug donations. The platform helps stakeholders keep track of drug movements throughout the supply chain, from donation to distribution, and generates reports to ensure transparency.
@@ -50,3 +45,8 @@ To get a local copy up and running, follow these steps.
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/medicine-donation-platform.git
+
+## Acknowledgments
+
+- [Django Documentation](https://docs.djangoproject.com/)
+- [Bootstrap Documentation](https://getbootstrap.com/)
