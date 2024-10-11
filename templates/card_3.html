@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/static/img/logo_sv.svg"/>
+<title>User Cards</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("/static/img/bg_medcardss.jpeg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    /*background-color: rgba(255, 255, 255, 0.8); /* Background color with opacity for better readability */*/
+    border-radius: 10px; /* Rounded corners for the container */
+  }
+
+  .card {
+    flex: 1 1 300px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    padding: 20px;
+    padding-top: 0px;
+    text-align: center;
+  }
+
+  img {
+    width: 301px;
+    height: 250px; /* Fixed height for images */
+    /*object-fit: cover;*/
+    object-fit: scale-down;
+    margin-inline: 50px;
+  }
+
+  button {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 5px;
+    /*background-color: transparent;*/
+    background-color: #007bff;
+    color: #fff;
+    /*color: #007bff;*/
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  button:hover {
+    /*background-color: #007bff;
+    color: #fff;*/
+    background-color: transparent;
+    color: #007bff;
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    .card {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .card {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <img src="/static/img/user12.png" alt="Login User Image">
+    <div class="card-content">
+      <h2>Donor Candidate</h2>
+      <p>This is the card for the login user.</p>
+      <a href="{% url 'login_user' %}"><button>Login</button></a>
+      <a href="{% url 'donor_regi' %}"><button>SignUp</button></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/static/img/images.png" alt="Volunteer Image">
+    <div class="card-content">
+      <h2>Volunteer</h2>
+      <p>This is the card for the volunteer.</p>
+      <a href="{% url 'volunter_log' %}"><button>Login</button></a>
+      <a href="{% url 'Volunteer_reg' %}"><button>SignUp</button></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/static/img/ab.jpg" alt="NGO Image">
+    <div class="card-content">
+      <h2>NGO</h2>
+      <p>This is the card for the NGO.</p>
+      <a href="{% url 'ngo_log' %}"><button>Login</button></a>
+      <a href="{% url 'ngo_reg' %}"><button>SignUp</button></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

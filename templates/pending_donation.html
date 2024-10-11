@@ -1,0 +1,58 @@
+{% extends 'ngo_home.html' %}
+
+{% block main %}
+
+
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+
+<script>
+    new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+            }
+        }
+    });
+</script>
+
+<div class="card shadow">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom : 2px solid blue">New Donation Request List</h5>
+    <div class="container-fluid">
+        <table id="example" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Donation Name</th>
+                    <th>Donation Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                {% for i in donation %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.medicine}}</td>
+                    <td>{{i.donationdate}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a href="{% url 'view_donation' i.id %}" class="text-primary">View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+{% endblock %}

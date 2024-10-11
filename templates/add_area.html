@@ -1,0 +1,66 @@
+{% extends 'ngo_home.html' %}
+<!-- Donation area page -->
+{% block main %}
+
+
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+
+<script>
+    new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+            }
+        }
+    });
+</script>
+
+<div class="card shadow">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom : 2px solid blue">Add Donation Area</h5>
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                    <label>Donation Area Name</label>
+                    <input type="text" name="areaname" class="form-control" placeholder="Donation Area" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-10">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" placeholder="Description" required></textarea>
+                </div>
+
+            </div>
+            <input type="submit" value="Submit" class="btn btn-danger px-3 mt-3">
+            <!-- medicine name, Tablet Count, Purchased Date, Expiry Date, Detail -->
+        </form>
+    </div>
+    </div>
+</div>
+
+{% if error == "yes" %}
+    <script>
+        alert('Donation area has been added');
+        window.location=("{% url 'manage_area' %}");
+    </script>
+{% endif %}
+
+{% if error == "no" %}
+    <script>
+        alert('Something went wrong. Please try again');
+    </script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'ngo_home.html' %}
+
+{% block main %}
+
+
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+
+<script>
+    new DataTable('#example', {
+        layout: {
+            topStart: {
+                buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+            }
+        }
+    });
+</script>
+
+<div class="card shadow">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom : 2px solid blue">View Donation Detail</h5>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr align="center">
+                <td colspan="4" style="font-size : 20px; color:red;">Donor Details</td>
+            </tr>
+            <tr>
+                <th>Donor Name</th>
+                <td>{{donation.name}} {{donation.last}}</td>
+                <th>Donor Contact</th>
+                <td>{{donation.contact}}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{donation.email}}</td>
+                <th>Donor Pic</th>
+                <td><img src="{{donation.donorpic.url}}" width="50px" height="50px"></td>
+            </tr>
+
+            <tr align="center">
+                <td colspan="4" style="font-size : 20px; color:red;">Donation Details</td>
+            </tr>
+            <tr>
+                <th>Donation Name</th>
+                <td>{{donation.medicine}}</td>
+                <th>Donation Pic</th>
+                <td><img src="{{donation.medicinepic.url}}" width="50px" height="50px"></td>
+            </tr>
+            <tr>
+                <th>Collection Location</th>
+                <td>{{donation.collectionloc}}</td>
+                <th>Donation Date</th>
+                <td>{{donation.donationdate}}</td>
+            </tr>
+            
+            <tr>
+                <th>Status</th>
+                <td style="text-transform: capitalize">{{donation.status}}</td>
+                <th>Updation Date</th>
+                <td>{{donation.updationdate}}</td>
+            </tr>
+            <tr>
+                <th>Admin Remark</th>
+                <td colspan="3">{{donation.adminremark}}</td>
+            </tr>
+            
+
+            
+            <tr>
+                <th>Donation Area</th>
+                {% comment %} {% for i in donationarea %} {% endcomment %}
+                <td style="text-transform: capitalize" colspan="3">{{donation.area}}</td><!--donation.donationarea.areaname-->
+                {% comment %} {% endfor %} {% endcomment %}
+            </tr>
+            <tr>
+                <th>Volunteer</th>
+                
+                <td colspan="3">
+                    {% comment %} {% for i in volunteer %} {{i.user.username}}[{{i.user.first_name}} {{i.user.last_name}}] {% endfor %} {% endcomment %}
+                    {{donation.vol_member}}
+                </td><!--{{donation.volunteer.user.username}}[{{donation.volunteer.user.first_name}} {{donation.volunteer.user.last_name}}]-->
+            </tr>
+            
+
+            {% if donation.volunteerremark == None %}
+            <form method="post">
+                {% csrf_token %}
+                <tr>
+                    <th>Donation Received ?</th>
+                    <td colspan="3">
+                        <input type="radio" name="status" value="Donation Received" required>Donation Received
+                        <input type="radio" name="status" value="Donation Not Received" required>Donation Not Received
+                    </td>
+                </tr>
+                <tr>
+                    <th>Volunteer Remark</th>
+                    <td colspan="3">
+                        <textarea name="volunteerremark" class="form-control" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td colspan="3">
+                        <button type="sumbit" class="btn btn-primary pull-left">Update<i class="fa fa-arrow-circle-right"></i></button>
+                    </td>
+                </tr>
+            </form>
+            {% else %}
+            <tr>
+                <th>Volunteer Remark</th>
+                <td colspan="3">{{donation.volunteerremark}}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+    </div>
+</div>
+{% if error == "no" %}
+<script>
+    alert('Donation status and remark updated successfully');
+    window.location=("{% url 'donationcollection_detail' donation.id %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try Again...');
+</script>
+{% endif %}
+
+{% endblock %}

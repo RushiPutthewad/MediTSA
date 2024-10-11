@@ -1,0 +1,13 @@
+Username: MediTSA
+Email: meditsa@gmail.com
+Password: meditsa123
+
+--------  Donor Candidate  ---------
+
+Email address : Rajesh@
+Password : rajesh123
+
+--------  Volunteer Candidate  ---------
+
+Email address : ronica@
+Password : ronica12

@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <style>
+            #signupform{
+                background: #AAC4FF;
+            }
+        </style>
+        <script>
+            function checkpassword(){
+                if(document.signup.pwd.value!=document.signup.cpwd.value){
+                    alert('Password and Confirm Password field does not same');
+                    document.signup.cpwd.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>    
+<body>
+{% include 'navigation_bars.html' %}
+<hr class="mt-0">
+<div class="card shadow m-5" id="signupform">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom : 2px solid orange"> Create an Account (NGO)</h5>
+        <div class="container-fluid">
+            <form action="" method="post" enctype="multipart/form-data" name="signup" onsubmit="return checkpassword()">
+                {% csrf_token %}
+                <div class="row row-cols-lg-6">
+                    <div class="col-sm-6">
+                        <div class="form-floating mt-2 mb-3">
+                            <input type="text" name="first" class="form-control" id="floatingInput" placeholder="Enter First Name" required patter="[A-Za-z]+">
+                            <label for="floatingInput">NGO Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mt-2 mb-3">
+                            <input type="text" name="last" class="form-control" id="floatingInput" placeholder="Enter Last Name" required patter="[A-Za-z]+">
+                            <label for="floatingInput">NGO ID</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="reg_no" class="form-control" id="floatingInput" placeholder="Email Address" required patter="[A-Za-z]+">
+                            <label for="floatingInput">Registration No.</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input type="date" name="reg_date" class="form-control" id="floatingInput" placeholder="Email Address" required patter="[A-Za-z]+">
+                            <label for="floatingInput">Registration Date</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" name="Eamil" class="form-control" id="floatingInput" placeholder="Email Address" required>
+                            <label for="floatingInput">Email ID</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input type="contact" name="contact" class="form-control" id="floatingInput" placeholder="Contact Number" required>
+                            <label for="floatingInput">Contact</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input type="password" name="pwd" class="form-control" id="floatingInput" placeholder="Enter Password" required>
+                            <label for="floatingInput">Password</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-floating mb-3">
+                                <input type="password" name="cpwd" class="form-control" id="floatingInput" placeholder="Enter Password" required>
+                                <label for="floatingInput">Confirm Password</label>
+                            </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">NGO Logo</label>
+                            <input class="form-control" type="file" name="pic" id="formFileMultiple" multiple>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">ID Proof Image(Authorised Document)</label>
+                            <input class="form-control" type="file" name="idpic" id="formFileMultiple" multiple>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea name="address" class="form-control" placeholder="Full Address" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>City</label>
+                            <textarea name="city" class="form-control" placeholder="Enter city name" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>State</label>
+                            <textarea name="state" class="form-control" placeholder="Enter state name" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>About Yourself</label>
+                            <textarea name="aboutme" class="form-control" placeholder="About Yourself" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Signup Successfull');
+    window.location=("{% url 'ngo_log' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try Again...');
+</script>
+{% endif %}
+
+{% if error == "not" %}
+<script>
+    alert('Your login status is pending');
+</script>
+{% endif %}
+</body>
+</html>

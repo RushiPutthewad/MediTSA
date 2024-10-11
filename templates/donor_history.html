@@ -1,0 +1,36 @@
+{% extends 'Donor_home.html' %}
+
+{% block main %}
+
+<div class="card shadow">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom : 2px solid blue">Donation History</h5>
+    <div class="container-fluid">
+        <table id="example" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Medicine Name</th>
+                    <th>Donation Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                {% for i in donation %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.medicine}}</td>
+                    <td>{{i.donationdate}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a href="{% url 'donationrec_detail' i.id %}" class="text-primary">View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+{% endblock %}
