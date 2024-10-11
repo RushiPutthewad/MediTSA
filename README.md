@@ -40,8 +40,6 @@ To get a local copy up and running, follow these steps.
 - Django 4.x
 - Git
 
-### Installation
-
 ## Acknowledgments
 
 - [Django Documentation](https://docs.djangoproject.com/)
