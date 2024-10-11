@@ -1,8 +1,6 @@
 # Platform for Donating Unused Medicine to NGOs
 
-<p align="center">
-![Platform for Donating Unused Medicine](./static/img/logo_sv.svg)
-</p>
+<p align="center">![Platform for Donating Unused Medicine](./static/img/logo_sv.svg)</p>
 <img src="./images/medicine_platform.jpg" alt="Platform for Donating Unused Medicine" width="400"/>
 
 
