@@ -1,5 +1,18 @@
 # Platform for Donating Unused Medicine to NGOs
 
+![Project Logo](./images/medicine_platform.jpg)
+
+## About The Project
+
+This web application is designed to streamline the process of donating unused medicine to NGOs, ensuring efficient record management and real-time tracking of drug donations. The platform helps stakeholders keep track of drug movements throughout the supply chain, from donation to distribution, and generates reports to ensure transparency.
+
+...
+
+## Acknowledgments
+
+- [Django Documentation](https://docs.djangoproject.com/)
+- [Bootstrap Documentation](https://getbootstrap.com/)
+
 ## About The Project
 
 This web application is designed to streamline the process of donating unused medicine to NGOs, ensuring efficient record management and real-time tracking of drug donations. The platform helps stakeholders keep track of drug movements throughout the supply chain, from donation to distribution, and generates reports to ensure transparency.
