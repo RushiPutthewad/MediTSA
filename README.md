@@ -6,12 +6,6 @@
 
 This web application is designed to streamline the process of donating unused medicine to NGOs, ensuring efficient record management and real-time tracking of drug donations. The platform helps stakeholders keep track of drug movements throughout the supply chain, from donation to distribution, and generates reports to ensure transparency.
 
-...
-
-## About The Project
-
-This web application is designed to streamline the process of donating unused medicine to NGOs, ensuring efficient record management and real-time tracking of drug donations. The platform helps stakeholders keep track of drug movements throughout the supply chain, from donation to distribution, and generates reports to ensure transparency.
-
 **Problem Statement:**  
 In the medical sector, there is a need for a system that can manage the clarification of medicine supply to NGOs and keep detailed records of donated medicines. This project addresses this by integrating real-time monitoring into a database system to track the donation and distribution of medicines, ensuring timely and efficient management.
 
